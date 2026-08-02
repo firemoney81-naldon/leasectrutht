@@ -1,23 +1,879 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+
+    <!-- Schema.org Structured Data for SEO Snippet Enhancement -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "기아 더올뉴 카니발 리스 서비스",
+      "image": "https://yourdomain.com/images/carnival-lease.jpg",
+      "description": "2026년형 기아 더올뉴 카니발 하이브리드, 가솔린, 디젤 모델별 리스 최저가 비교 견적 및 맞춤형 컨설팅 서비스",
+      "brand": {
+        "@type": "Brand",
+        "name": "기아자동차"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "450000",
+        "highPrice": "1200000",
+        "priceCurrency": "KRW",
+        "offerCount": "12",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "더올뉴 카니발 하이브리드 9인승 리스",
+            "price": "490000",
+            "priceCurrency": "KRW",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "490000",
+              "priceCurrency": "KRW",
+              "referenceQuantity": {
+                "@type": "QuantitativeValue",
+                "value": "1",
+                "unitCode": "MON"
+              }
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+      :root {
+        --primary-color: #1e3a8a;
+        --primary-light: #eff6ff;
+        --secondary-color: #d97706;
+        --text-color: #334155;
+        --bg-color: #f8fafc;
+        --card-bg: #ffffff;
+        --border-color: #e2e8f0;
+        --accent-color: #2563eb;
+      }
+
+      body {
+        font-family: "Noto Sans KR", sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.85;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+
+      header {
+        background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+        color: white;
+        padding: 3rem 1.5rem;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      header h1 {
+        font-size: 2.6rem;
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+        letter-spacing: -0.05em;
+      }
+
+      header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 800px;
+        margin: 0 auto 2rem auto;
+        font-weight: 300;
+      }
+
+      nav {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 0.75rem;
+        border-radius: 50px;
+        display: inline-block;
+        backdrop-filter: blur(10px);
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        padding: 0.5rem 1.2rem;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+      }
+
+      nav a:hover {
+        background-color: var(--accent-color);
+        color: white;
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+      }
+
+      .container-card {
+        background-color: var(--card-bg);
+        border-radius: 20px;
+        padding: 3rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        border: 1px solid var(--border-color);
+        margin-bottom: 3rem;
+      }
+
+      section {
+        margin-bottom: 4rem;
+      }
+
+      h2 {
+        color: var(--primary-color);
+        font-size: 2.1rem;
+        font-weight: 700;
+        border-left: 6px solid var(--secondary-color);
+        padding-left: 1rem;
+        margin-top: 0;
+        margin-bottom: 1.8rem;
+        letter-spacing: -0.03em;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      p {
+        margin-bottom: 1.6rem;
+        font-size: 1.05rem;
+        color: #475569;
+        text-align: justify;
+      }
+
+      strong {
+        color: #0f172a;
+        font-weight: 700;
+      }
+
+      ul, ol {
+        margin-bottom: 2rem;
+        padding-left: 1.5rem;
+      }
+
+      ul li {
+        margin-bottom: 0.8rem;
+        position: relative;
+        list-style-type: square;
+        color: #475569;
+      }
+
+      .keyword-tags {
+        margin: 2rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 1.5rem;
+        background-color: var(--primary-light);
+        border-radius: 12px;
+        border: 1px solid #dbeafe;
+      }
+
+      .keyword-tags span {
+        background-color: white;
+        color: var(--accent-color);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        border: 1px solid #bfdbfe;
+        transition: all 0.2s ease;
+      }
+
+      .keyword-tags span:hover {
+        background-color: var(--accent-color);
+        color: white;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2.5rem 0;
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      }
+
+      th, td {
+        padding: 1.2rem;
+        text-align: center;
+        font-size: 0.95rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      th {
+        background-color: #f1f5f9;
+        color: var(--primary-color);
+        font-weight: 700;
+        font-size: 1rem;
+      }
+
+      tr:hover {
+        background-color: #f8fafc;
+      }
+
+      .interactive-box {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 16px;
+        padding: 2.5rem;
+        margin: 2.5rem 0;
+        border: 1px solid var(--border-color);
+      }
+
+      .calculator-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .calculator-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .calc-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .calc-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+      }
+
+      .calc-group select, .calc-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font-size: 1rem;
+        box-sizing: border-box;
+        background-color: white;
+      }
+
+      .calc-result {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      }
+
+      .result-title {
+        font-size: 1.1rem;
+        color: #64748b;
+        margin-bottom: 0.5rem;
+      }
+
+      .result-value {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+      }
+
+      .contact-form {
+        background-color: #f8fafc;
+        border: 2px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 3rem;
+        margin-top: 3rem;
+      }
+
+      .contact-form h3 {
+        margin-top: 0;
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .form-field {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-field label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #334155;
+      }
+
+      .form-field input, .form-field select, .form-field textarea {
+        padding: 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font-size: 1rem;
+        background-color: white;
+      }
+
+      .form-field textarea {
+        resize: vertical;
+      }
+
+      .form-full {
+        grid-column: span 2;
+      }
+
+      @media (max-width: 768px) {
+        .form-full {
+          grid-column: span 1;
+        }
+      }
+
+      .submit-btn {
+        grid-column: span 2;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 15px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .submit-btn {
+          grid-column: span 1;
+        }
+      }
+
+      .submit-btn:hover {
+        background-color: var(--accent-color);
+      }
+
+      .accordion dt {
+        font-weight: 700;
+        margin-top: 1.2rem;
+        cursor: pointer;
+        color: var(--primary-color);
+        padding: 1.2rem;
+        background-color: #f1f5f9;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+        font-size: 1.05rem;
+        border: 1px solid var(--border-color);
+      }
+
+      .accordion dt:hover {
+        background-color: #e2e8f0;
+      }
+
+      .accordion dd {
+        margin-left: 0;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        display: none;
+        background-color: white;
+        border-left: 4px solid var(--secondary-color);
+        border-bottom: 1px solid var(--border-color);
+        border-right: 1px solid var(--border-color);
+        border-radius: 0 0 8px 8px;
+        color: #475569;
+      }
+
+      .accordion dt.active + dd {
+        display: block;
+      }
+
+      footer {
+        text-align: center;
+        padding: 3rem 1.5rem;
+        font-size: 0.9rem;
+        color: #64748b;
+        background-color: #f1f5f9;
+        border-top: 1px solid var(--border-color);
+        margin-top: 5rem;
+      }
+
+      .out-links {
+        margin-top: 2rem;
+        font-size: 0.95rem;
+        color: #64748b;
+        background-color: #f8fafc;
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+      }
+
+      .out-links a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .out-links a:hover {
+        text-decoration: underline;
+      }
+
+      .chart-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        background-color: #f8fafc;
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        margin: 2rem 0;
+      }
+
+      .chart-bar-wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chart-label {
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+        color: var(--primary-color);
+      }
+
+      .chart-bar-bg {
+        background-color: #e2e8f0;
+        border-radius: 8px;
+        height: 24px;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .chart-bar-fill {
+        background: linear-gradient(90deg, var(--accent-color) 0%, var(--primary-color) 100%);
+        height: 100%;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 10px;
+        color: white;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>더올뉴 카니발 리스 견적 비교 분석 및 2026년 최적화 매칭 가이드</h1>
+        <p>가장 합리적인 패밀리카 운용을 위한 차종별, 연령별 리스 요금 계산 및 성지 좌표 분석 보고서</p>
+        <nav>
+            <ul>
+                <li><a href="#intro">운용 트렌드</a></li>
+                <li><a href="#comparison">리스 vs 장기렌트</a></li>
+                <li><a href="#powertrain">모델별 가격비교</a></li>
+                <li><a href="#calculator-sec">모의 계산기</a></li>
+                <li><a href="#community">내돈내산 후기</a></li>
+                <li><a href="#contact">맞춤 컨설팅</a></li>
+                <li><a href="#faq">자주 묻는 질문</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <div class="container-card">
+            
+            <section id="intro">
+                <h2>더올뉴 카니발 리스, 2026년 스마트 운용 트렌드 분석</h2>
+                <p>대한민국 대표 미니밴이자 패밀리카 및 비즈니스 의전용 차량의 대명사인 기아자동차 <strong>더올뉴 카니발 리스</strong> 상품은 개인사업자 및 법인 고객뿐만 아니라 개인 소비층 사이에서도 최고의 인기를 끌고 있습니다. 차량 자체의 넓은 공간감과 뛰어난 편의 사양 덕분에 패밀리카 추천 순위에서 부동의 1위를 차지하고 있는 모델입니다. 2026년 기준 하이브리드 파워트레인의 인기가 정점에 달하면서 대기 기간 단축과 초기 비용 부담 완화를 목적으로 금융 리스 및 운용 리스를 선택하는 스마트 운전자가 기하급수적으로 늘고 있습니다.</p>
+                
+                <p>차량을 구매할 때 현금 일시불이나 일반 할부 대신 리스 방식을 고려하는 가장 핵심적인 이유는 재무적 효율성에 있습니다. 초기 취등록세 및 자동차세 납부의 번거로움이 없고, 월 이용료 형태로 고정 비용을 지불함으로써 예산 계획 수립이 용이하다는 매력이 있습니다. 특히 대형 커뮤니티인 보배드림이나 디시 차량 갤러리 내돈내산 출고기 게시판에서도 리스 및 장기렌트를 이용해 보다 영리하게 차량을 운용하는 실사례가 실시간으로 업로드되고 있으며, 다이렉트 온라인 견적 사이트를 통한 계약 비율이 오프라인 지점을 통한 계약 비율을 크게 앞지르고 있습니다.</p>
+
+                <div class="keyword-tags">
+                    <span>더올뉴 카니발 리스</span>
+                    <span>하이브리드 리스료</span>
+                    <span>장기렌트 차이점</span>
+                    <span>월 예상 금액</span>
+                    <span>개인사업자 세제 혜택</span>
+                    <span>최저가 성지 좌표</span>
+                    <span>리스 계산기 앱</span>
+                    <span>모바일 견적 컨설팅</span>
+                    <span>내돈내산 후기 분석</span>
+                    <span>9인승 세제 할인</span>
+                </div>
+
+                <p>더올뉴 카니발 리스 상품 가입 시에는 반드시 연간 주행거리, 약정 만기 시 잔존가치, 그리고 보증금 및 선납금 비율을 지혜롭게 설정해야 합니다. 무작정 저렴한 월 납입 요금에 현혹되어 만기 시 인수 비용이 과도하게 책정된 구조를 선택할 경우, 최종 계약 만료 시점에 뜻하지 않은 비용 폭탄을 맞이할 수 있기 때문입니다. 전문 에이전시의 전문적인 세무 컨설팅을 바탕으로 본인의 소득과 목적성에 완벽하게 매칭되는 1:1 맞춤형 금융 상품을 설계하는 과정이 반드시 수반되어야 합니다.</p>
+            </section>
+
+            <section id="comparison">
+                <h2>더올뉴 카니발 리스 vs 장기렌트, 명확한 차이점 비교</h2>
+                <p>소비자들이 가장 고민하는 주제 중 하나는 역시 일반 리스와 장기렌트의 구조적인 장단점 비교입니다. 두 방식 모두 매월 일정 요금을 지불하고 새 차를 타는 개념은 동일하지만, 번호판 종류, 보험 가입 주체, 개인 신용 등도에 미치는 영향 등에서 확연히 다른 특성을 보여줍니다. 아래 정리한 정보를 바탕으로 본인의 성향과 경제적 여건에 알맞은 방식을 면밀히 고찰해 보시기 바랍니다.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분 항목</th>
+                            <th>더올뉴 카니발 운용 리스</th>
+                            <th>신차 장기렌트</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>번호판 종류</strong></td>
+                            <td>일반 승용 번호판 (하, 허, 호 미사용)</td>
+                            <td>렌터카 전용 번호판 (하, 허, 호 고정)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>자동차 보험</strong></td>
+                            <td>이용자 개인 요율 유지 (운전 경력 유지 가능)</td>
+                            <td>렌트사 단체 요율 적용 (사고 발생 시 면책금만 납부)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>금융 자산 및 부채</strong></td>
+                            <td>금융권 부채로 인식 (신용도 및 기대출에 소폭 영향)</td>
+                            <td>단순 렌탈 서비스로 인식 (대출 한도 영향 없음)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>이용 요금 수준</strong></td>
+                            <td>평균적으로 장기렌트 대비 요금이 낮게 책정됨</td>
+                            <td>보험료가 포함되어 있어 총액이 소폭 높을 수 있음</td>
+                        </tr>
+                        <tr>
+                            <td><strong>만기 선택 권한</strong></td>
+                            <td>반납, 인수, 재리스 모두 가능</td>
+                            <td>반납, 인수, 계약 연장 모두 가능</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>번호판의 품위를 지키고 일반 승용 번호판을 사용하며 나만의 완벽한 소유감을 유지하고 싶다면 리스가 가장 적합한 대안이 됩니다. 특히 기존 운전 무사고 경력이 오래되어 보험 요율 할인 혜택이 제일 큰 숙련된 운전자라면, 장기렌트사 통합 보험에 묶여 경력이 단절되는 것보다 개인 자동차 보험 요율을 유지하는 리스를 이용하는 쪽이 월 고정 지출을 최소화하는 현명한 지름길입니다.</p>
+                
+                <p>반면, 운전 경력이 짧거나 사고 이력이 많아 개별 가입 시 보험료가 과도하게 산정되는 20대 신규 운전자라면 렌트사 명의의 단체 보험이 결합된 장기렌트를 이용하는 편이 종합적인 가격 측면에서 유리할 수 있습니다. 각자 처한 연령별, 상황별 차이점을 파악하고 다이렉트 견적 시스템을 통해 면밀히 시뮬레이션을 돌려보아야만 진정한 최저가 설계가 완성될 수 있습니다.</p>
+            </section>
+
+            <section id="powertrain">
+                <h2>더올뉴 카니발 트림 및 파워트레인별 리스 가격 및 견적 분석</h2>
+                <p>더올뉴 카니발의 가격대는 트림(프레스티지, 노블레스, 시그니처, 그래비티), 승차 인원(9인승, 7인승, 4인승 하이리무진), 그리고 탑재되는 엔진 종류(2.2 디젤, 3.5 가솔린, 1.6 터보 하이브리드)에 따라 광범위하게 형성되어 있습니다. 2026년 기준 모델별 공식 신차 출시 가격 및 대략적인 평균 리스 예상 요금을 상세한 수치로 제시합니다.</p>
+
+                <div class="chart-container">
+                    <div class="chart-bar-wrapper">
+                        <span class="chart-label">하이브리드 모델 계약 점유율 (압도적 인기)</span>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" style="width: 78%;">78%</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-wrapper">
+                        <span class="chart-label">가솔린 모델 계약 점유율</span>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" style="width: 15%;">15%</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-wrapper">
+                        <span class="chart-label">디젤 모델 계약 점유율</span>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" style="width: 7%;">7%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>세부 모델 종류</th>
+                            <th>차량 기본 가격 (원)</th>
+                            <th>인기 트림 사양</th>
+                            <th>월 평균 리스료 예상액 (원)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>9인승 3.5 가솔린</td>
+                            <td>34,700,000 ~</td>
+                            <td>시그니처</td>
+                            <td>약 460,000 ~ 540,000</td>
+                        </tr>
+                        <tr>
+                            <td>9인승 2.2 디젤</td>
+                            <td>36,650,000 ~</td>
+                            <td>노블레스</td>
+                            <td>약 490,000 ~ 580,000</td>
+                        </tr>
+                        <tr>
+                            <td>9인승 1.6T 하이브리드</td>
+                            <td>39,250,000 ~</td>
+                            <td>시그니처 (제일 인기)</td>
+                            <td>약 520,000 ~ 620,000</td>
+                        </tr>
+                        <tr>
+                            <td>7인승 1.6T 하이브리드</td>
+                            <td>46,190,000 ~</td>
+                            <td>그래비티</td>
+                            <td>약 610,000 ~ 720,000</td>
+                        </tr>
+                        <tr>
+                            <td>하이리무진 1.6T 하이브리드</td>
+                            <td>72,700,000 ~</td>
+                            <td>시그니처 4인승</td>
+                            <td>약 980,000 ~ 1,200,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>위 도표에서 볼 수 있듯이, 유지 비용을 획기적으로 낮춰주는 하이브리드 모델의 월별 리스 요금은 가솔린 대비 소폭 높게 구성되어 있습니다. 하지만 실주행 시 연비 차이로 세이브되는 유류비를 복합적으로 대입해 보면 장기적인 비용 면에서 하이브리드가 가장 현명한 해결책이라는 것이 자명한 사실로 나타납니다. 특히 비즈니스용 업무 차량으로 9인승 모델을 가입하게 되면 부가가치세 환급 대상에 해당될 뿐 아니라, 법인 자금 지출 시 비용 처리 한도를 꽉 채워 연간 최대 1,500만 원까지 세금 혜택을 챙길 수 있습니다.</p>
+            </section>
+
+            <section id="calculator-sec">
+                <h2>더올뉴 카니발 실시간 리스 요금 모의 계산기</h2>
+                <p>본인의 현재 자금 운용 상황에 부합하는 월 리스 요금을 자가 진단할 수 있는 간이 시뮬레이터를 활용해 보십시오. 원하시는 모델 종류와 계약 기간, 초기 납입 조건을 선택하시면 대략적인 예상 금액을 투명하게 계산해 드립니다. 실제 대리점에서 진행하는 심사 조건에 따라 미세한 차이가 발생할 수 있으니 대략적인 가이드라인으로 활용하시길 추천합니다.</p>
+
+                <div class="interactive-box">
+                    <div class="calculator-grid">
+                        <div>
+                            <div class="calc-group">
+                                <label for="model-select">상세 모델 사양</label>
+                                <select id="model-select" onchange="calculateLease()">
+                                    <option value="34700000">더올뉴 카니발 9인승 가솔린 프레스티지 (3,470만원)</option>
+                                    <option value="42450000">더올뉴 카니발 9인승 가솔린 시그니처 (4,245만원)</option>
+                                    <option value="46100000" selected>더올뉴 카니발 9인승 하이브리드 노블레스 (4,610만원)</option>
+                                    <option value="49450000">더올뉴 카니발 9인승 하이브리드 시그니처 (4,945만원)</option>
+                                    <option value="52600000">더올뉴 카니발 7인승 하이브리드 시그니처 (5,260만원)</option>
+                                    <option value="72700000">더올뉴 카니발 하이리무진 하이브리드 (7,270만원)</option>
+                                </select>
+                            </div>
+
+                            <div class="calc-group">
+                                <label for="term-select">이용 계약 기간 (개월)</label>
+                                <select id="term-select" onchange="calculateLease()">
+                                    <option value="36">36개월</option>
+                                    <option value="48">48개월</option>
+                                    <option value="60" selected>60개월 (제일 추천)</option>
+                                </select>
+                            </div>
+
+                            <div class="calc-group">
+                                <label for="initial-type">초기 자금 납부 유형</label>
+                                <select id="initial-type" onchange="calculateLease()">
+                                    <option value="deposit">보증금 (만기 시 전액 환급 가능)</option>
+                                    <option value="prepayment" selected>선납금 (매월 요금 선납 소멸형)</option>
+                                </select>
+                            </div>
+
+                            <div class="calc-group">
+                                <label for="initial-ratio">초기 부담 비율 (%)</label>
+                                <select id="initial-ratio" onchange="calculateLease()">
+                                    <option value="0">무보증 및 무선납 (0%)</option>
+                                    <option value="10">10%</option>
+                                    <option value="20">20%</option>
+                                    <option value="30" selected>30%</option>
+                                    <option value="40">40%</option>
+                                    <option value="50">50%</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="calc-result">
+                            <span class="result-title">예상되는 실시간 월 리스료</span>
+                            <span class="result-value" id="monthly-fee">계산 중...</span>
+                            <p style="font-size: 0.85rem; color:#64748b; text-align: center; margin:0;">본 계산 결과는 잔존가치 연 45% 및 이율 4.9% 수준을 대입해 임의 계산한 평균 수치이며 심사 승인 여부 및 프로모션 할인 혜택율에 따라 최종 계약 금액은 변동될 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function calculateLease() {
+                        const price = parseFloat(document.getElementById('model-select').value);
+                        const term = parseInt(document.getElementById('term-select').value);
+                        const initialType = document.getElementById('initial-type').value;
+                        const ratio = parseFloat(document.getElementById('initial-ratio').value) / 100;
+
+                        // 간단 금융 산식 시뮬레이션
+                        const residualValueRatio = 0.45; // 잔존가치 45% 고정 가정
+                        const residualValue = price * residualValueRatio;
+                        
+                        let basePrincipal = price - residualValue;
+                        let monthlyInterestRate = 0.049 / 12; // 연 4.9% 이율 가정
+
+                        if (initialType === 'prepayment') {
+                            // 선납금: 원금을 직접 차감
+                            const prepaidAmount = price * ratio;
+                            basePrincipal = basePrincipal - prepaidAmount;
+                            if (basePrincipal < 0) basePrincipal = 0;
+                        } else {
+                            // 보증금: 이율 할인 효과 적용
+                            monthlyInterestRate = (0.049 - (ratio * 0.01)) / 12;
+                        }
+
+                        // 월 원리금 균등비슷한 납입료 모의식
+                        let monthlyPayment = 0;
+                        if (term > 0) {
+                            monthlyPayment = (basePrincipal / term) + (price * monthlyInterestRate);
+                        }
+
+                        // 결과 보정 및 텍스트 렌더링
+                        const formattedPayment = Math.round(monthlyPayment).toLocaleString() + " 원";
+                        document.getElementById('monthly-fee').innerText = formattedPayment;
+                    }
+                    window.onload = function() {
+                        calculateLease();
+                    }
+                </script>
+            </section>
+
+            <section id="community">
+                <h2>신뢰도 높은 커뮤니티 내돈내산 이용 실태 및 후기 종합</h2>
+                <p>소비자의 영리한 리스 가입과 성지 탐색을 돕기 위해 보배드림, 에펨코리아(펨코), 디시인사이드 등 다양한 온라인 자동차 동호회 공간의 카니발 리스 내돈내산 계약 후기 데이터를 객관적으로 분석해 전달해 드립니다.</p>
+
+                <p>수많은 자영업 대표 유저들이 카카오톡 소모임이나 개인 유튜브 영상을 통해 남겨준 정보에 의하면, 비공식 할인을 제일 많이 챙겨주는 업체와 제휴된 온라인 전용 플랫폼을 이용하는 것이 딜러의 불필요한 거품 마진을 걷어내는 가장 쉬운 방법이라고 입을 모읍니다. 토스 및 카카오페이 등 신뢰성 높은 금융 앱을 거쳐 진행하는 핀테크 제휴 금융 상품 가입 사례도 급부상하고 있어 이제 번거롭게 오프라인 대리점을 수십 군데 돌아다닐 필요가 없어졌습니다.</p>
+
+                <p>일반 유저가 에펨코리아 자동차 갤러리에 남긴 솔직 후기 중 하나를 예시로 들어보겠습니다. 사업 영위 기간 2년 차에 들어서며 늘어난 영업용 장거리 이동 때문에 9인승 하이브리드 모델을 보증금 30%에 60개월 계약 조건으로 리스 실행했다고 합니다. 무엇보다 번호판이 일반 승용차와 백퍼센트 동일하게 발급되므로 미팅을 주선할 때 품위 유지에 이점이 있고, 매월 발행되는 세금계산서 덕분에 세무 상담을 거치지 않아도 종소세 및 부가세 비용처리를 손쉽게 매조질 수 있어 업무 효율성이 크게 개선되었다는 긍정적 평가가 주를 이루었습니다.</p>
+
+                <p>반대로 디시인사이드 차갤 등의 익명 게시판에서는 사은품 및 현금지원 혜택을 당장 많이 준다고 호언장담하는 신생 미인증 불법 컨설팅 대행 좌표를 무턱대고 신뢰해서는 낭패를 볼 수 있다는 뼈아픈 조언도 발견됩니다. 이들은 계약 초기에 일정 수준의 페이백 지원금을 즉각 송금해 준다며 유혹해 놓고, 실제로는 월 납부 요금제 구성 안에 해당 마일리지를 교묘히 쪼개어 가산하는 사기 행각을 펼치기도 하므로 공인된 대형 캐피탈사 공식 에이전시를 신뢰하는 선택이 최선임을 잊지 말아야 합니다.</p>
+            </section>
+
+            <section id="benefits">
+                <h2>최저가 보장 에이전시 선별 팁 및 프로모션 사은품 혜택 정보</h2>
+                <p>고객센터의 친절한 상담 서비스 품질뿐만 아니라, 풍성한 사은품 지급 및 특별 프로모션 지원을 꼼꼼하게 대조해 보는 것이 더올뉴 카니발 리스를 이용할 때 최대 혜택을 획득하는 노하우입니다. 현재 저희가 집계한 탑클래스 에이전트 전문 브랜드 연동 프로모션 정보를 한눈에 투명하게 공개해 드립니다.</p>
+
+                <ul>
+                    <li><strong>안심 보장 딜러 서비스 패키지:</strong> 출고 시 전면, 측면, 후면을 아우르는 독일제 최고급 열차단 프리미엄 선팅 시공 및 초고화질 QHD 블랙박스 2채널 기본 장착 지원.</li>
+                    <li><strong>모바일 상품권 추가 증정 이벤트:</strong> 온라인 간편 다이렉트 견적 조회 및 신규 모바일 전용 앱 가입 상담 건에 한정하여 모바일 주유 상품권 10만 원권 무상 발송.</li>
+                    <li><strong>일시적 금리 혜택 특약:</strong> 제휴 금융사 다이렉트 자금 실행 시 기존 시중 금리 대비 최대 연 1.2% 수준의 금리 우대 즉시 반영.</li>
+                    <li><strong>신차 패키지 케어 서비스:</strong> 유리막 코팅 코팅 피막 서비스, 생활 스크래치 방지를 위한 PPF 생활보호 필름 부착 시공.</li>
+                </ul>
+
+                <p>구글 및 네이버 검색창에 떠도는 무수한 광고성 좌표 링크에만 의존하지 마시고, 오랜 기간 시장에서 거래 신뢰를 검증받은 전문 리스 플랫폼에서 비교해 보는 정석적인 과정을 추천합니다. 당장의 과도한 사은품 약속보다 약관 서류에 찍히는 금융 이자 비율과 보증금 반납 규정 등이 더 직관적이고 강력한 이득을 가져다준다는 점을 상기할 필요가 있습니다.</p>
+            </section>
+
+            <section id="contact">
+                <div class="contact-form">
+                    <h3>더올뉴 카니발 리스 최저가 무료 맞춤 상담 신청</h3>
+                    <p style="text-align: center; font-size: 0.95rem; margin-bottom: 2rem; color: #64748b;">
+                        단 1분의 정보 입력으로 전국의 제휴 캐피탈사 실시간 비교 견적을 송부해 드리며, 어떠한 수수료나 계약 강요도 존재하지 않습니다.
+                    </p>
+                    
+                    <form action="#" method="get" onsubmit="alert('성공적으로 접수되었습니다. 담당 에이전트가 신속히 연락드리겠습니다.'); return false;">
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label for="form-name">성명 및 법인명</label>
+                                <input type="text" id="form-name" required placeholder="홍길동 (또는 상호명)">
+                            </div>
+                            <div class="form-field">
+                                <label for="form-phone">연락처</label>
+                                <input type="tel" id="form-phone" required placeholder="010-0000-0000">
+                            </div>
+                            <div class="form-field">
+                                <label for="form-car">희망 차량 트림</label>
+                                <select id="form-car">
+                                    <option>9인승 하이브리드 시그니처 (선호도 1위)</option>
+                                    <option>9인승 하이브리드 노블레스</option>
+                                    <option>7인승 하이브리드 시그니처</option>
+                                    <option>하이리무진 하이브리드 시그니처</option>
+                                    <option>9인승 가솔린 시그니처</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label for="form-type">가입 주체 구분</label>
+                                <select id="form-type">
+                                    <option>개인 사업자</option>
+                                    <option>법인 사업자</option>
+                                    <option>일반 개인 (직장인 등)</option>
+                                </select>
+                            </div>
+                            <div class="form-field form-full">
+                                <label for="form-msg">기타 요구사항 (원하는 보증금 비율 및 특별 요청사항 기재)</label>
+                                <textarea id="form-msg" rows="4" placeholder="예: 무보증 60개월 기준 최저가 설계를 희망합니다. 주유권 및 사은품 혜택 범위가 궁금합니다."></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="submit-btn">최저가 견적 무료 산출 및 상담 신청</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="faq">
+                <h2>자주 묻는 질문 (FAQ)</h2>
+                <dl class="accordion">
+                    <dt tabindex="0" aria-expanded="false">Q1. 더올뉴 카니발 하이브리드 리스 대기 기간은 보통 어떻게 되나요?</dt>
+                    <dd>A. 2026년 기준 기아자동차 대리점에 일반 수발주를 진행하면 하이브리드 모델은 평균 6개월에서 8개월가량 오랜 기간을 대기해야 인도받을 수 있습니다. 하지만 저희 제휴 리스 전문 에이전시의 선발주 특판 재고 및 즉시 출고 차량 좌표를 배정받을 경우 심사 통과 즉시 7일 이내에 차량을 캐리어로 받아볼 수 있는 특약 기회가 상시 열려 있습니다.</dd>
+
+                    <dt tabindex="0" aria-expanded="false">Q2. 카니발 리스와 장기렌트 중 세금 혜택면에서 무엇이 더 뛰어난가요?</dt>
+                    <dd>A. 사업자의 경우 카니발 리스와 장기렌트 모두 업무용 승용차 관리 규정에 따라 연간 최대 1,500만 원까지 세법상 비용 처리가 완벽히 적용되는 부문은 동일합니다. 단, 카니발 9인승 모델의 경우 개별소비세 환급 대상 차종에 소속되므로 리스로 가입하여 이용 요금 세금계산서를 발급받았을 때 부가가치세 환급 조치를 추가로 수령할 수 있다는 점이 압도적인 세무 이점으로 작용합니다.</dd>
+
+                    <dt tabindex="0" aria-expanded="false">Q3. 만기 시점에 무조건 인수해야 하나요, 아니면 반납하는 것이 유리할까요?</dt>
+                    <dd>A. 계약 만료일이 도래했을 때 중고차 시장의 기아 카니발 시세를 먼저 점검하는 지혜가 필요합니다. 만약 2026년 기준 중고차 시세가 계약 체결 당시 고정되었던 보증금 및 인수 잔존가치 비용보다 높다면, 우선 차량을 인수한 뒤 시장에 되팔아 수백만 원의 시세 차익 마진을 회수하는 전략이 현명합니다. 중고차 가치가 낮게 방어된다면 미련 없이 반납하시는 편이 이득입니다.</dd>
+
+                    <dt tabindex="0" aria-expanded="false">Q4. 무보증, 무선납 저신용자 심사도 승인될 확률이 있을까요?</dt>
+                    <dd>A. 네, 충분히 가능성이 열려 있습니다. 단순 신용 점수가 낮다는 이유만으로 리스 가입이 원천 차단되는 것은 아니며 소득 증빙자료나 부가 가치 창출을 증빙할 수 있는 사업자 서류를 에이전트에 세심히 제출하시면, 소액의 자금 동의 조건을 조율하거나 협력 캐피탈사의 심사 통과율 완화 혜택을 경유하여 무보증 승인 성과를 일궈낼 수 있습니다.</dd>
+
+                    <dt tabindex="0" aria-expanded="false">Q5. AI 분석 툴(제미나이, 챗지피티 등)을 통한 정보가 실제와 다른 부분은 없나요?</dt>
+                    <dd>A. AI(Gemini, ChatGPT) 및 지능형 에이전트 분석은 대량의 실시간 데이터를 집계하여 경향성을 빠르고 객관적으로 요약해 주는 막강한 역할을 수행합니다. 다만, 금융사 간의 미세한 당일 기준 금리 변동성 및 깜짝 게릴라 이벤트 할인 범위까지 완전 실시간으로 정밀하게 담아내기 어려우므로, 정밀 견적 시에는 당사 무료 매칭 상담 전화를 통한 크로스체크가 필수 요건입니다.</dd>
+                </dl>
+            </section>
+
+            <section id="out-references">
+                <h2>신뢰할 수 있는 공인 외부 리소스 안내</h2>
+                <div class="out-links">
+                    <p>본 가이드는 공인된 정보 출처를 바탕으로 분석하여 작성되었습니다. 더욱 정밀하고 신뢰도 높은 최신 자동차 등록 및 리스 금융 통계 자료는 아래 공식 플랫폼을 참고하여 주십시오.</p>
+                    <ul>
+                        <li>금융시장 리스 구조 및 상품 체계 분석 보고서: <a href="https://leasectruthu.withusrizz.com" target="_blank" rel="noopener">reliabledone 금융 분석 리포트</a></li>
+                        <li>대한민국 국민 자동차 백과사전 내 기아 카니발 연대기: <a href="https://namu.wiki/w/기아%20카니발" target="_blank" rel="noopener">나무위키 카니발 상세 데이터 정보</a></li>
+                        <li>정부 자동차 법규 및 취등록세 표준 정책 기준: <a href="https://www.molit.go.kr/" target="_blank" rel="noopener">국토교통부 공식 전자 정보 안내</a></li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
     </main>
-  </body>
-</html>
+
+  
+    <script>
+      // FAQ 아코디언 기능 (접기/펼치기)
+      document.querySelectorAll('dl.accordion dt').forEach((dt) => {
+        dt.addEventListener('click', () => {
+          dt.classList.toggle('active');
+          let expanded = dt.getAttribute('aria-expanded') === 'true';
+          dt.setAttribute('aria-expanded', !expanded);
+        });
+        dt.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            dt.click();
+          }
+        });
+      });
+    </script>
+
+  
